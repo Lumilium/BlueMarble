@@ -74,9 +74,9 @@ public final class BlueMarble extends JavaPlugin {
                     }
                 } else if(args[0].equalsIgnoreCase("help")) {
                     p.sendMessage(ChatColor.GOLD + "---------- " + ChatColor.WHITE + "Blue Marble Help: Index (1/1)" + ChatColor.GOLD + " ---------------");
-                    p.sendMessage(ChatColor.GOLD + "/bluemarble roll: " + ChatColor.WHITE + "Roll the dice");
-                    p.sendMessage(ChatColor.GOLD + "/bluemarble help: " + ChatColor.WHITE + "View the commands of the Blue Marble plugin.");
-                    p.sendMessage(ChatColor.GOLD + "/bluemarble goldenkey: " + ChatColor.WHITE + "Pull out the golden key.");
+                    p.sendMessage(ChatColor.GOLD + "/bluemarble roll or /bm roll: " + ChatColor.WHITE + "Roll the dice");
+                    p.sendMessage(ChatColor.GOLD + "/bluemarble help or /bm help: " + ChatColor.WHITE + "View the commands of the Blue Marble plugin.");
+                    p.sendMessage(ChatColor.GOLD + "/bluemarble goldenkey or /bm goldenkey: " + ChatColor.WHITE + "Pull out the golden key.");
                     p.sendMessage(ChatColor.GOLD + "to be added");
                     p.sendMessage(ChatColor.GOLD + "---------------------------------------------------");
                 } else if (args[0].equalsIgnoreCase("goldenkey")) {
