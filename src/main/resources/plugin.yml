@@ -1,0 +1,12 @@
+name: BlueMarble
+version: '${project.version}'
+main: kr.co.skeleton.bluemarble.BlueMarble
+api-version: 1.16
+authors: [ skelton0126 ]
+description: BlueMarble plugin
+commands:
+  BlueMarble:
+  /check:
+  /giveitem:
+  1:
+  bm:
