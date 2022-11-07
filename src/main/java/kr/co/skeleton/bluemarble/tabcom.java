@@ -11,9 +11,13 @@ import java.util.List;
 
 public class tabcom implements TabCompleter {
 
-    List<String> arguments = new ArrayList<String>();
+    static List<String> arguments = new ArrayList<>();
     @Override
     public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, @NotNull String[] args) {
+        return bm();
+    }
+
+    public static List<String> bm() {
         if (arguments.isEmpty()) {
             arguments.add("help");
             arguments.add("roll");
