@@ -1,11 +1,5 @@
 package kr.co.skeleton.bluemarble;
 
-import com.sk89q.worldedit.IncompleteRegionException;
-import com.sk89q.worldedit.bukkit.BukkitAdapter;
-import com.sk89q.worldedit.bukkit.BukkitPlayer;
-import com.sk89q.worldedit.bukkit.WorldEditPlugin;
-import com.sk89q.worldedit.math.BlockVector3;
-import com.sk89q.worldedit.regions.Region;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -17,7 +11,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
@@ -51,6 +44,26 @@ public final class BlueMarble extends JavaPlugin implements TabCompleter {
 //    }
 
 //    WorldEditPlugin wep;
+
+    private static void GoldekeyFunction() {
+        Random r = new Random();
+        String[] title = {"이사", "재난", "벌금", "이사", "고속도로", "이사", "우대권"},
+                description = {"뒤로 한칸가기", "앞으로 세칸가기", "과속운전을 해서 적발됨 10만원을 은행에 내시오", "무인도로 가시오", "출발로 가시오", "레드스톤실험실로 가시오", "우대권"};
+        int randomStoring = r.nextInt(title.length);
+        String itemTitle = title[randomStoring],
+                itemDescription = description[randomStoring];
+
+        ItemStack item = new ItemStack(Material.DIAMOND, 1);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName(itemTitle);
+        List<String> lore = new ArrayList<>();
+        lore.add(itemDescription);
+        meta.setLore(lore);
+        meta.addEnchant(Enchantment.DAMAGE_UNDEAD, 1, false);
+        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        item.setItemMeta(meta);
+        Goldenkey = item;
+    }
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String label, @NotNull String[] args) {
@@ -90,23 +103,7 @@ public final class BlueMarble extends JavaPlugin implements TabCompleter {
                     p.sendMessage(ChatColor.GOLD + "to be added");
                     p.sendMessage(ChatColor.GOLD + "---------------------------------------------------");
                 } else if (args[0].equalsIgnoreCase("goldenkey")) {
-                    Random r = new Random();
-                    String[] title = {"이사", "재난", "벌금", "이사", "고속도로", "이사", "우대권"},
-                            description = {"뒤로 한칸가기", "앞으로 세칸가기", "과속운전을 해서 적발됨 10만원을 은행에 내시오", "무인도로 가시오", "출발로 가시오", "레드스톤실험실로 가시오", "우대권"};
-                    int randomStoring = r.nextInt(title.length);
-                    String itemTitle = title[randomStoring],
-                            itemDescription = description[randomStoring];
-
-                    ItemStack item = new ItemStack(Material.DIAMOND, 1);
-                    ItemMeta meta = item.getItemMeta();
-                    meta.setDisplayName(itemTitle);
-                    List<String> lore = new ArrayList<>();
-                    lore.add(itemDescription);
-                    meta.setLore(lore);
-                    meta.addEnchant(Enchantment.DAMAGE_UNDEAD, 1, false);
-                    meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-                    item.setItemMeta(meta);
-                    Goldenkey = item;
+                    GoldekeyFunction();
                     p.getInventory().addItem(Goldenkey);
                 } else if (args[0].equalsIgnoreCase("test")) {
                     p.sendMessage("1" + "2");
