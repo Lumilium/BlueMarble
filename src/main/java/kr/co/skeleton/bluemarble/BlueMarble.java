@@ -1,21 +1,28 @@
 package kr.co.skeleton.bluemarble;
 
+//import com.sk89q.worldedit.IncompleteRegionException;
+//import com.sk89q.worldedit.bukkit.BukkitAdapter;
+//import com.sk89q.worldedit.bukkit.BukkitPlayer;
+//import com.sk89q.worldedit.bukkit.WorldEditPlugin;
+//import com.sk89q.worldedit.math.BlockVector3;
+//import com.sk89q.worldedit.regions.Region;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
+//import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
-import org.bukkit.enchantments.Enchantment;
+//import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemFlag;
+//import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
+//import org.bukkit.inventory.meta.ItemMeta;
+//import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.List;
+//import java.util.ArrayList;
+//import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
@@ -23,7 +30,7 @@ public final class BlueMarble extends JavaPlugin implements TabCompleter {
 
     @Override
     public void onEnable() {
-        itemManager.init();
+//        itemManager.init();
 //        wep = getWorldEditPlugin();
         Objects.requireNonNull(Bukkit.getPluginCommand("BlueMarble")).setTabCompleter(new tabcom());
         Objects.requireNonNull(Bukkit.getPluginCommand("bm")).setTabCompleter(new tabcom());
@@ -35,7 +42,6 @@ public final class BlueMarble extends JavaPlugin implements TabCompleter {
         System.out.println("[BlueMarble] plugin Disabled");
     }
 
-    public static ItemStack Goldenkey;
 
 //    public WorldEditPlugin getWorldEditPlugin() {
 //        Plugin p = Bukkit.getServer().getPluginManager().getPlugin("WorldEdit");
@@ -45,25 +51,7 @@ public final class BlueMarble extends JavaPlugin implements TabCompleter {
 
 //    WorldEditPlugin wep;
 
-    private static void GoldekeyFunction() {
-        Random r = new Random();
-        String[] title = {"이사", "재난", "벌금", "이사", "고속도로", "이사", "우대권"},
-                description = {"뒤로 한칸가기", "앞으로 세칸가기", "과속운전을 해서 적발됨 10만원을 은행에 내시오", "무인도로 가시오", "출발로 가시오", "레드스톤실험실로 가시오", "우대권"};
-        int randomStoring = r.nextInt(title.length);
-        String itemTitle = title[randomStoring],
-                itemDescription = description[randomStoring];
 
-        ItemStack item = new ItemStack(Material.DIAMOND, 1);
-        ItemMeta meta = item.getItemMeta();
-        meta.setDisplayName(itemTitle);
-        List<String> lore = new ArrayList<>();
-        lore.add(itemDescription);
-        meta.setLore(lore);
-        meta.addEnchant(Enchantment.DAMAGE_UNDEAD, 1, false);
-        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        item.setItemMeta(meta);
-        Goldenkey = item;
-    }
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String label, @NotNull String[] args) {
@@ -103,8 +91,8 @@ public final class BlueMarble extends JavaPlugin implements TabCompleter {
                     p.sendMessage(ChatColor.GOLD + "to be added");
                     p.sendMessage(ChatColor.GOLD + "---------------------------------------------------");
                 } else if (args[0].equalsIgnoreCase("goldenkey")) {
-                    GoldekeyFunction();
-                    p.getInventory().addItem(Goldenkey);
+                    itemManager.GoldenkeyFunction();
+                    p.getInventory().addItem(itemManager.Goldenkey);
                 } else if (args[0].equalsIgnoreCase("test")) {
                     p.sendMessage("1" + "2");
                 } else {
